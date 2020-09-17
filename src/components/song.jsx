@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 class Song extends Component {
-  state = {};
-  render() {
-    return <h1>hola</h1>;
+  state = {
+    rawTitle: "cancion-grupo",
+  };
+  setState.raw
+    render() {
+    return <h1>{this.state.rawTitle}</h1>;
   }
 }
 
