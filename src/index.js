@@ -4,11 +4,11 @@ import "./index.css";
 //import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
-import Song from "./components/song";
+import Songs from "./components/songs";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Song rawTitle="dskjfskdfjh" />
+    <Songs />
   </React.StrictMode>,
   document.getElementById("root")
 );

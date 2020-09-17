@@ -1,12 +1,7 @@
-import React, { Component } from "react";
-class Song extends Component {
-  state = {
-    rawTitle: "cancion-grupo",
-  };
-  setState.raw
-    render() {
-    return <h1>{this.state.rawTitle}</h1>;
-  }
-}
+import React from "react";
+
+const Song = (props) => {
+  return <h4>{props.rawTitle}</h4>;
+};
 
 export default Song;
