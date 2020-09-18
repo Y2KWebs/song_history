@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import Song from "./song";
+//import Song from "./song";
+import Card from "react-bootstrap/Card";
+
+import Accordion from "react-bootstrap/Accordion";
 
 class Songs extends Component {
   constructor(props) {
@@ -42,17 +45,29 @@ class Songs extends Component {
 
   render() {
     return (
-      <div>
-        <audio controls autoplay>
+      <div className="container-fluid">
+        <audio controls autoPlay>
           <source
             src="http://s8.voscast.com:7528/stream/1/"
             type="audio/mpeg"
           />
         </audio>
-
-        {this.state.items.map((song) => (
-          <Song key={song.id} rawTitle={song.rtitle} />
-        ))}
+        <Accordion defaultActiveKey="0">
+          {this.state.items.map((song) => (
+            <Card style={{ width: "100%" }} key={song.id * 4}>
+              <Accordion.Toggle
+                as={Card.Header}
+                eventKey={song.id}
+                key={song.id * 3}
+              >
+                {song.rtitle}
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey={song.id} key={song.id}>
+                <Card.Body key={song.id * 2}>{song.rtitle}</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          ))}
+        </Accordion>
       </div>
     );
   }
