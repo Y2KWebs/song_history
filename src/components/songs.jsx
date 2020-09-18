@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Song from "./song";
-//import Data from "../data.json";
 
 class Songs extends Component {
   constructor(props) {
@@ -13,7 +12,14 @@ class Songs extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/ultimas_canciones.json")
+    this.getData();
+    setInterval(this.getData, 5000); // runs every 5 seconds.
+  }
+
+  getData = () => {
+    fetch(
+      "https://musical.y2kwebs.com/musical/hit/upcoming/ultimas_canciones.json"
+    )
       .then((res) => res.json())
       .then(
         (result) => {
@@ -32,11 +38,18 @@ class Songs extends Component {
           });
         }
       );
-  }
+  };
 
   render() {
     return (
       <div>
+        <audio controls autoplay>
+          <source
+            src="http://s8.voscast.com:7528/stream/1/"
+            type="audio/mpeg"
+          />
+        </audio>
+
         {this.state.items.map((song) => (
           <Song key={song.id} rawTitle={song.rtitle} />
         ))}
