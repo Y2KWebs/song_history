@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import Song from "./song";
+import Song from "./song";
 import Card from "react-bootstrap/Card";
 
 import Accordion from "react-bootstrap/Accordion";
@@ -54,7 +54,7 @@ class Songs extends Component {
         </audio>
         <Accordion defaultActiveKey="0">
           {this.state.items.map((song) => (
-            <Card style={{ width: "100%" }} key={song.id * 4}>
+            <Card key={song.id * 4}>
               <Accordion.Toggle
                 as={Card.Header}
                 eventKey={song.id}
@@ -63,7 +63,9 @@ class Songs extends Component {
                 {song.rtitle}
               </Accordion.Toggle>
               <Accordion.Collapse eventKey={song.id} key={song.id}>
-                <Card.Body key={song.id * 2}>{song.rtitle}</Card.Body>
+                <Card.Body key={song.id * 2}>
+                  <Song rawTitle={song.rtitle} trackInfo={song.trackinfo} />
+                </Card.Body>
               </Accordion.Collapse>
             </Card>
           ))}
