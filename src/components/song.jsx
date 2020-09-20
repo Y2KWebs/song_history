@@ -1,24 +1,28 @@
 import React from "react";
-import SongDetails from "./songdetails";
 
 function Song(props) {
   const info = JSON.parse(props.trackInfo);
-  //console.log(info);
-  let infoitems = [];
-  //console.log(props);
-  let caca = "";
+
+  let details = {};
+
   if (info.track) {
-    //infoitems = <SongDetails details={info.track.idTrack} />;
-    caca = JSON.stringify(info.track[0]);
-    console.log(caca);
-    //console.log(caca);
+    const detailsJson = info.track[0];
+
+    details = Object.keys(detailsJson).map(function (key) {
+      if (detailsJson[key]) {
+        return (
+          <div key={key}>
+            {key} : {detailsJson[key]}
+          </div>
+        );
+      } else {
+        return null;
+      }
+    });
   } else {
-    caca = "nada";
+    details = "No hay información adicional.";
   }
-  return (
-    <div>
-      <SongDetails details={caca} />
-    </div>
-  );
+  return <div>{details}</div>;
 }
+
 export default Song;

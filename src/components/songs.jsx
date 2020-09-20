@@ -64,7 +64,7 @@ class Songs extends Component {
               </Accordion.Toggle>
               <Accordion.Collapse eventKey={song.id} key={song.id}>
                 <Card.Body key={song.id * 2}>
-                  <Song rawTitle={song.rtitle} trackInfo={song.trackinfo} />
+                  <Song trackInfo={song.trackinfo} />
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
